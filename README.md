@@ -1,1 +1,1 @@
-# Open_Vocabulary_Grounding
+# Grounded_Diffusion_Webpage
