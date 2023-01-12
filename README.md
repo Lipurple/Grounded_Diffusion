@@ -1,1 +1,1 @@
-# Grounded_Diffusion_Webpage
+# Grounded_Diffusion
