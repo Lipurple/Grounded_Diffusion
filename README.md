@@ -1,3 +1,3 @@
-# Open_Vocabulary_Grounding
+# Grounded_Diffusion_Webpage
 
-https://lipurple.github.io/Open_Vocabulary_Grounding/
+https://lipurple.github.io/Grounded_Diffusion_Webpage/
