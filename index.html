@@ -232,25 +232,25 @@
                 <center>
                   <br>
                   <span style="font-size:20px">Code
-                    <a href="https://github.com/MediaBrain-SJTU/MedKLIP"> [GitHub]</a>
+                    <a href="https://github.com/Lipurple/Grounded-Generation"> [GitHub]</a>
                   </span>
                 </center>
               </td>
-
-              <!-- <td align="center" width="200px">
-                <center>
-                  <br>
-                  <span style="font-size:20px">
-                    Paper <a href="https://arxiv.org/pdf/2109.03230.pdf"> [arXiv]</a>
-                  </span>
-                </center>
-              </td> -->
 
               <td align="center" width="200px">
                 <center>
                   <br>
                   <span style="font-size:20px">
-                    Cite <a href="https://chaoyi-wu.github.io/MedKLIP/cite.txt"> [BibTeX]</a>
+                    Paper <a href=""> [arXiv]</a>
+                  </span>
+                </center>
+              </td>
+
+              <td align="center" width="200px">
+                <center>
+                  <br>
+                  <span style="font-size:20px">
+                    Cite <a href="./resources/bibtex.txt"> [BibTeX]</a>
                   </span>
                 </center>
               </td>
@@ -258,21 +258,15 @@
       </table>
 	
       <br><hr>
-      <!-- <center><h2> Abstract </h2> </center>
-      <p style="text-align:justify; text-justify:inter-ideograph;">
-      <left>
-        In this paper, we consider the problem of enhancing self-supervised visual-language pre-training~(VLP) with medical-specific knowledge, 
-        by exploiting the paired image-text reports from the radiological daily practice.
-        In particular, we make the following contributions:
-        <i>First</i>, unlike existing works that directly process the raw reports,
-        we adopt a novel report pre-processing mechanism by simply extracting the useful medical entities, avoiding unnecessary complexity from understanding the language grammar;
-        <i>Second</i>, we propose a novel entity embedding module by querying an external knowledge description base, to exploit the rich context of additional information that the medical domain affords, and implicitly build relationships between entities in the language embedding space;
-        <i> Third</i>, we propose a novel Transformer-based fusion model for spatially aligning the entity description with visual signals at the image patch level only with self-supervised learning, thus enabling the ability for spatial grounding;
-        <i> Fourth</i>, we conduct thorough experiments to validate the effectiveness of our proposed architecture, and benchmark on numerous public benchmarks {\em e.g.}, ChestX-ray14, 
-        RSNA Pneumonia, SIIM-ACR Pneumothorax, COVIDx CXR-2, COVID Rural, and EdemaSeverity. 
-        In both zero-shot and fine-tuning settings, our model has demonstrated strong performance compared with the former methods on disease classification and grounding.
-      </center></p>
-      <p><img class="center"  src="./resources/Method.png" width="800px"></p> -->
+      <br>         
+      
+      <center>
+          <img src="./resources/teaser.png" alt="alt text" style="width: 100%; object-fit: cover; max-width:100%;"></a>
+        </center>
+        <p style="text-align:justify; text-justify:inter-ideograph;"><left>
+        Predictions from our guided text-to-image diffusion model. The model is able to simultaneously generate images and segmentation masks for the corresponding visual objects described in the text prompt, for example, <strong>Pikachu</strong>, <strong>Unicorn</strong>,  <i>etc</i>.
+      </left></p>
+        <br> 
 
       <center><h2> Abstract </h2> </center>
       <p style="text-align:justify; text-justify:inter-ideograph;">
@@ -280,23 +274,16 @@
         <div class="text" width="400px"> 
           <p style="text-align:justify; text-justify:inter-ideograph;">
             <left>
-              In this paper, we consider the problem of enhancing self-supervised visual-language pre-training (VLP) with medical-specific knowledge, 
-              by exploiting the paired image-text reports from the radiological daily practice.
-              In particular, we make the following contributions:
-              <i>First</i>, unlike existing works that directly process the raw reports,
-              we adopt a novel report pre-processing mechanism by simply extracting the useful medical entities, avoiding unnecessary complexity from understanding the language grammar;
-              <i>Second</i>, we propose a novel entity embedding module by querying an external knowledge description base, to exploit the rich context of additional information that the medical domain affords, and implicitly build relationships between entities in the language embedding space;
-              <i> Third</i>, we propose a novel Transformer-based fusion model for spatially aligning the entity description with visual signals at the image patch level only with self-supervised learning, thus enabling the ability for spatial grounding;
-              <i> Fourth</i>, we conduct thorough experiments to validate the effectiveness of our proposed architecture, and benchmark on numerous public benchmarks, e.g., ChestX-ray14, 
-              RSNA Pneumonia, SIIM-ACR Pneumothorax, COVIDx CXR-2, COVID Rural, and EdemaSeverity. 
-              In both zero-shot and fine-tuning settings, our model has demonstrated strong performance compared with the former methods on disease classification and grounding.
+              In this paper, our goal is to steer a pre-trained text-to-image diffusion model towards open-vocabulary grounding, <i> i.e.</i>, simultaneously generating images and segmentation masks for the corresponding visual entities described in the text prompt. We make the following contributions:<br> 
+              (i) we insert an grounding module to existing diffusion model, that can be trained to align the visual and textual embedding space of the diffusion model with only a small number of object categories;<br>
+              (ii) we propose an automatic pipeline for constructing a dataset, that consists of { image, segmentation mask, text prompt } triplets, to train the proposed grounding module; <br>
+              (iii) we evaluate the performance of open-vocabulary grounding and show that the module can well segment the objects of categories beyond seen ones at training time;<br>
+              (iv) we adopt the guided diffusion model to build a synthetic semantic segmentation dataset, and show that, training a standard segmentation model on such dataset demonstrates competitive performance on zero-shot segmentation~(ZS3) benchmark, which opens up new opportunities for adopting the powerful diffusion model for discriminative tasks.
           </left></p>
         </div>
-        <div class="image" width="400px">
-          <img style="width:400px" src="./MedKLIP_ Medical Knowledge Enhanced Language-Image Pre-Training_files/teaser.png">
-        </div>
       </div>
-      <br><hr>
+
+      <br>
       <center> <h2> Architecture </h2> </center>
       <p style="text-align:justify; text-justify:inter-ideograph;"><left>
         The whole framework of our method. 
@@ -306,8 +293,8 @@
         <i>Visual Encoder</i> is used to encoder the input of visual modalities and <i>Fusion Module</i> are used for cross-modality interaction. 
         The details of <i>Report Filter</i> can be found in the right sub-figure. A report is first filtered by a pre-trained filter and viewed as a set of triplets. 
         The <i>``Position''</i> part mixed with some negative positions for contrastive loss and the <i>``Exist''</i> part is used for CE loss. 
-	</left></p>
-        <p><img class="left" src="./MedKLIP_ Medical Knowledge Enhanced Language-Image Pre-Training_files/Method.png" width="800px"></p>
+	       </left></p>
+      <p><img class="left" src="./resources/arch.png" width="800px"></p>
       
       <br>
       <hr>
