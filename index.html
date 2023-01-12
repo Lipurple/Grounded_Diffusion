@@ -1,0 +1,354 @@
+
+
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+
+  <!--
+  <script src="./resources/jsapi" type="text/javascript"></script>
+  <script type="text/javascript" async>google.load("jquery", "1.3.2");</script>
+ -->
+
+<style type="text/css">
+  @font-face {
+   font-family: 'Avenir Book';
+   src: url("./fonts/Avenir_Book.ttf"); /* File to be stored at your site */
+   }
+
+  body {
+    font-family: "Avenir Book", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight:300;
+    font-size:14px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 800px;
+  }
+  h1 {
+    font-weight:300;
+  }
+  h2 {
+    font-weight:300;
+  }
+
+  p {
+    font-weight:300;
+    line-height: 1.4;
+  }
+
+  code {
+    font-size: 0.8rem;
+    margin: 0 0.2rem;
+    padding: 0.5rem 0.8rem;
+    white-space: nowrap;
+    background: #efefef;
+    border: 1px solid #d3d3d3;
+    color: #000000;
+    border-radius: 3px;
+  }
+
+  pre > code {
+    display: block;
+    white-space: pre;
+    line-height: 1.5;
+    padding: 0;
+    margin: 0;
+  }
+
+  pre.prettyprint > code {
+    border: none;
+  }
+
+
+  .container {
+        display: flex;
+        align-items: center;
+        justify-content: center
+  }
+  .image {
+        flex-basis: 40%
+  }
+  .text {
+        padding-left: 20px;
+        padding-right: 20px;
+  }
+
+  .disclaimerbox {
+    background-color: #eee;
+    border: 1px solid #eeeeee;
+    border-radius: 10px ;
+    -moz-border-radius: 10px ;
+    -webkit-border-radius: 10px ;
+    padding: 20px;
+  }
+
+  video.header-vid {
+    height: 140px;
+    border: 1px solid black;
+    border-radius: 10px ;
+    -moz-border-radius: 10px ;
+    -webkit-border-radius: 10px ;
+  }
+
+  img.header-img {
+    height: 140px;
+    border: 1px solid black;
+    border-radius: 10px ;
+    -moz-border-radius: 10px ;
+    -webkit-border-radius: 10px ;
+  }
+
+  img.rounded {
+    border: 0px solid #eeeeee;
+    border-radius: 10px ;
+    -moz-border-radius: 10px ;
+    -webkit-border-radius: 10px ;
+
+  }
+
+  a:link,a:visited
+  {
+    color: #1367a7;
+    text-decoration: none;
+  }
+  a:hover {
+    color: #208799;
+  }
+
+  td.dl-link {
+    height: 160px;
+    text-align: center;
+    font-size: 22px;
+  }
+
+  .layered-paper-big { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+    box-shadow:
+            0px 0px 1px 1px rgba(0,0,0,0.35), /* The top layer shadow */
+            5px 5px 0 0px #fff, /* The second layer */
+            5px 5px 1px 1px rgba(0,0,0,0.35), /* The second layer shadow */
+            10px 10px 0 0px #fff, /* The third layer */
+            10px 10px 1px 1px rgba(0,0,0,0.35), /* The third layer shadow */
+            15px 15px 0 0px #fff, /* The fourth layer */
+            15px 15px 1px 1px rgba(0,0,0,0.35), /* The fourth layer shadow */
+            20px 20px 0 0px #fff, /* The fifth layer */
+            20px 20px 1px 1px rgba(0,0,0,0.35), /* The fifth layer shadow */
+            25px 25px 0 0px #fff, /* The fifth layer */
+            25px 25px 1px 1px rgba(0,0,0,0.35); /* The fifth layer shadow */
+    margin-left: 10px;
+    margin-right: 45px;
+  }
+
+
+  .layered-paper { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+    box-shadow:
+            0px 0px 1px 1px rgba(0,0,0,0.35), /* The top layer shadow */
+            5px 5px 0 0px #fff, /* The second layer */
+            5px 5px 1px 1px rgba(0,0,0,0.35), /* The second layer shadow */
+            10px 10px 0 0px #fff, /* The third layer */
+            10px 10px 1px 1px rgba(0,0,0,0.35); /* The third layer shadow */
+    margin-top: 5px;
+    margin-left: 10px;
+    margin-right: 30px;
+    margin-bottom: 5px;
+  }
+
+  .vert-cent {
+    position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+  }
+
+  hr
+  {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+  }
+</style>
+
+	<title>Guiding Text-to-Image Diffusion Model Towards Grounded Generation</title>
+</head>
+
+<body data-new-gr-c-s-check-loaded="14.1093.0" data-gr-ext-installed="">
+	<br>
+	<center>
+	<span style="font-size:36px">Guiding Text-to-Image Diffusion Model Towards Grounded Generation</span><br><br><br>
+	</center>
+	<table align="center" width="900px">
+            <tbody><tr>
+                    <td align="center" width="180px">
+              <center>
+                <span style="font-size:16px">Ziyi Li<sup>* 1</sup></span>
+                </center>
+                </td>
+                    <td align="center" width="160px">
+              <center>
+                <span style="font-size:16px">Qinye Zhou<sup>* 1</sup></span>
+                </center>
+              </td>
+                    <td align="center" width="160px">
+              <center>
+                <span style="font-size:16px"><a href="https://cmic.sjtu.edu.cn/CN/show.aspx?info_lb=35&info_id=1341&flag=35">Xiaoyun Zhang</a><sup>1</sup></span>
+                </center>
+              </td>
+                    <td align="center" width="160px">
+              <center>
+                <span style="font-size:16px"><a href="https://mediabrain.sjtu.edu.cn/yazhang/">Ya Zhang</a><sup>1, 2</sup></span>
+                </center>
+                </td>
+                    <td align="center" width="160px">
+              <center>
+                <span style="font-size:16px"><a href="https://cmic.sjtu.edu.cn/wangyanfeng/">Yanfeng Wang</a><sup>1, 2</sup></span>
+                </center>
+                </td>
+                    <td align="center" width="160px">
+              <center>
+                <span style="font-size:16px"><a href="https://weidixie.github.io/">Weidi Xie</a><sup>1, 2 <img class="round" style="width:20px" src="./resources/corresponding_fig.png"></sup></span>
+                </center>            
+		        
+          </td></tr>
+        </tbody></table><br>
+	
+	  <table align="center" width="700px">
+            <tbody><tr>
+                    <td align="center" width="50px">
+              <center>
+                    <span style="font-size:16px"></span>
+                </center>
+                </td>
+                    <td align="center" width="300px">
+              <center>
+                    <span style="font-size:16px"><sup>1</sup>CMIC, Shanghai Jiao Tong University</span>
+                </center>
+                </td>
+                    <td align="center" width="300px">
+              <center>
+                    <span style="font-size:16px"><sup>2</sup>Shanghai AI Lab</span>
+                </center>
+                </td>
+        </tr></tbody></table>
+	
+	<table align="center" width="700px">
+            <tbody><tr>
+              <td align="center" width="200px">
+                <center>
+                  <br>
+                  <span style="font-size:20px">Code
+                    <a href="https://github.com/Lipurple/Grounded-Diffusion"> [GitHub]</a>
+                  </span>
+                </center>
+              </td>
+
+              <td align="center" width="200px">
+                <center>
+                  <br>
+                  <span style="font-size:20px">
+                    Paper <a href=""> [arXiv]</a>
+                  </span>
+                </center>
+              </td>
+
+              <td align="center" width="200px">
+                <center>
+                  <br>
+                  <span style="font-size:20px">
+                    Cite <a href="./resources/bibtex.txt"> [BibTeX]</a>
+                  </span>
+                </center>
+              </td>
+            </tr></tbody>
+      </table>
+	
+      <br><hr>
+      <br>         
+      
+      <center>
+          <img src="./resources/teaser.png" alt="alt text" style="width: 100%; object-fit: cover; max-width:100%;"></a>
+        </center>
+        <p style="text-align:justify; text-justify:inter-ideograph;"><left>
+        Predictions from our guided text-to-image diffusion model. The model is able to simultaneously generate images and segmentation masks for the corresponding visual objects described in the text prompt, for example, <strong>Pikachu</strong>, <strong>Unicorn</strong>,  <i>etc</i>.
+      </left></p>
+        <br> 
+
+      <center><h2> Abstract </h2> </center>
+      <p style="text-align:justify; text-justify:inter-ideograph;">
+      </p><div class="container">
+        <div class="text" width="400px"> 
+          <p style="text-align:justify; text-justify:inter-ideograph;">
+            <left>
+              In this paper, our goal is to steer a pre-trained text-to-image diffusion model towards open-vocabulary grounding, <i> i.e.</i>, simultaneously generating images and segmentation masks for the corresponding visual entities described in the text prompt. We make the following contributions:<br> 
+              (i) we insert an grounding module to existing diffusion model, that can be trained to align the visual and textual embedding space of the diffusion model with only a small number of object categories;<br>
+              (ii) we propose an automatic pipeline for constructing a dataset, that consists of { image, segmentation mask, text prompt } triplets, to train the proposed grounding module; <br>
+              (iii) we evaluate the performance of open-vocabulary grounding and show that the module can well segment the objects of categories beyond seen ones at training time;<br>
+              (iv) we adopt the guided diffusion model to build a synthetic semantic segmentation dataset, and show that, training a standard segmentation model on such dataset demonstrates competitive performance on zero-shot segmentation~(ZS3) benchmark, which opens up new opportunities for adopting the powerful diffusion model for discriminative tasks.
+          </left></p>
+        </div>
+      </div>
+
+      <br>
+      <center> <h2> Architecture </h2> </center>
+      <p><img class="left" src="./resources/arch.png" width="800px"></p>
+      <p style="text-align:justify; text-justify:inter-ideograph;"><left>
+        The overview of our method. 
+        The <strong>left</strong> figure shows the knowledge induction procedure, where we first construct a dataset with synthetic images from diffusion model and generate corresponding oracle groundtruth masks by an off-the-shelf object detector, which is used to train the open-vocabulary grounding module. 
+        The <strong>right</strong> figure shows the architectural detail of our grounding module, that takes the text embeddings of corresponding entities and the visual features extracted from diffusion model as input, and outputs the corresponding segmentation masks. During training, both the diffusion model and text encoders are kept <strong>frozen</strong>.
+         </left></p>
+      
+      <br>
+      <hr>
+      <center><h2>Protocol-I: Grounded Generation</h2></center>
+      <p><b>Quantitative result for Protocol-I evaluation on grounded generation </b> </p>
+      <p><left>
+       Our model has been trained on the synthesized training datasets, that consists of images with one or two objects from only seen categories, and test on our synthesized test dataset that consist of images with one or two objects of both seen and unseen categories. Our model outperforms the DAAM by a large margin.
+      </left></p>
+      <p><img class="center" src="./resources/table1.png" width="800px"></p>
+
+      <p><b>Qualitative Results</b> </p>
+      <p><left>
+       Segmentation results of PASCAL-sim (left) and COCO-sim (right) on seen (motorbike, bottle, backpack and apple) and unseen (sofa, car, hot dog and bear) categories. Our grounded generation model achieves comparable segmentation results to the oracle groundtruth generated by the off-the-shelf object detector.
+      </left></p>
+      <p><img class="center" src="./resources/img1.png" width="800px"></p>
+      <br>
+      <hr>
+
+      <center><h2>Protocol-II: Open-vocabulary Segmentation</h2></center>
+      <p><b>Comparison with the previous ZS3 methods on PASCAL VOC. </b> </p>
+      <div class="container">
+        <div class="image" width="550px">
+          <center><p><img class="center" src="./resources/table2.png" width="500px"></p></center>
+        </div>
+        <div class="text" width="250px"> 
+          <p> The “Seen”, “Unseen”, and “Harmonic” denote mIoU of seen categories, unseen categories, and their harmonic mean. These ZS3 methods are trained on PASCAL-VOC training set.
+          </p>
+        </div>
+      </div>
+      
+      <p><b>Visualization of zero-shot segmentation results on Pascal-VOC</b> </p>
+      <p><left>
+       MaskFormer trained on our synthetic dataset achieves comparable performance with Zegformer (the state-of-the-art zero-shot semantic segmentation method) in segmenting unseen categories, {\em i.e.} pottedplant, sofa and tvmonitor. <strong>Note that</strong> although MaskFormer has seen these categories during training, the image-segmentation pairs of these categories are generated with our grounding module.
+      </left></p>
+      <p><img class="center" src="./resources/img2.png" width="800px"></p>
+      <br>
+      <hr>
+
+      <center><h2>Ablation Study</h2></center>
+      <p><b>Timesteps for Extracting Visual Representation.</b> </p>
+      <div class="container">
+        <div class="image" width="550px">
+          <center><p><img class="center" src="./resources/img3.png" width="500px"></p></center>
+        </div>
+        <div class="text" width="250px"> 
+          <p> We compare the performance by extracting visual representation from Stable Diffusion at different timesteps. Results show that as the denoising steps gradually decrease, <i>i.e.</i>, from t = 0 → 50, the performance for grounding tends to decrease in general, when t = 5, the best result is obtained.
+          </p>
+        </div>
+      </div>
+
+      <br>
+      <hr>
+      <center> <h2> Acknowledgements </h2> </center>
+      <p> 
+	      Based on a template by <a href="http://web.mit.edu/phillipi/">Phillip Isola</a> and <a href="http://richzhang.github.io/">Richard Zhang</a>.
+      </p>
+      <br>
+<br>
+
+
+</body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>
