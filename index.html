@@ -313,7 +313,7 @@ We make the following contributions:<br>
 
       <center><h2>Protocol-II: Open-vocabulary Segmentation</h2></center>
       <p><b>Comparison with the previous ZS3 methods on PASCAL VOC. </b> </p>
-      <div class="container">
+      <!-- <div class="container">
         <div class="image" width="550px">
           <center><p><img class="center" src="./resources/table2.png" width="500px"></p></center>
         </div>
@@ -321,7 +321,11 @@ We make the following contributions:<br>
           <p> The “Seen”, “Unseen”, and “Harmonic” denote mIoU of seen categories, unseen categories, and their harmonic mean. These ZS3 methods are trained on PASCAL-VOC training set.
           </p>
         </div>
-      </div>
+      </div> -->
+       <p><img class="center" src="./resources/table2.png" width="800px"></p>
+       <p><left>
+         The “Seen”, “Unseen”, and “Harmonic” denote mIoU of seen categories, unseen categories, and their harmonic mean. These ZS3 methods are trained on PASCAL-VOC training set.
+        </left></p>
       
       <p><b>Visualization of zero-shot segmentation results on Pascal-VOC</b> </p>
       <p><left>
@@ -332,6 +336,16 @@ We make the following contributions:<br>
       <hr>
 
       <center><h2>Ablation Study</h2></center>
+      <p><b>Effect on the Number of Seen Categories.</b> </p>
+      <div class="container">
+        <div class="image" width="550px">
+          <center><p><img class="center" src="./resources/table4.png" width="500px"></p></center>
+        </div>
+        <div class="text" width="250px"> 
+          <p> We ablate the number of seen categories to further explore the generalisation ability of our proposed grounding module. As shown in the table, the grounding module can generalise to unseen categories, even with as few as five seen categories;
+          </p>
+        </div>
+      </div>
       <p><b>Timesteps for Extracting Visual Representation.</b> </p>
       <div class="container">
         <div class="image" width="550px">
