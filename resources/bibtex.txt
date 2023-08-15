@@ -1,6 +1,6 @@
 @article{li2023grounded,
   author = {Li, Ziyi and Zhou, Qinye and Zhang, Xiaoyun and Zhang, Ya and Wang, Yanfeng and Xie, Weidi},
   title = {Open-vocabulary Object Segmentation with Diffusion Models},
-  booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision}
+  booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision},
   year = {2023}
 }
